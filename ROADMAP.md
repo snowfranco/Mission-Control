@@ -37,7 +37,7 @@ Tag legend: [HU] human-owned, [AI] authored by the assistant from the repo, [INF
 
 ### Phase 3: Notion mirror by Möbius (💡 planned)
 
-- [HU] Möbius writes the Notion portfolio mirror for cross-machine visibility. The repo stays canonical; Notion mirrors (agents/_master_brief.md, agents/mobius/OVERLAY.md).
+- [HU] Möbius writes the Notion portfolio mirror for cross-machine visibility (DECISIONS.md, 2026-07-23). The repo stays canonical; Notion mirrors (agents/_master_brief.md). Möbius's overlay lists the mirror as an input only today; the write responsibility gets added to the overlay when Phase 3 starts.
 - [AI] Nothing writes to Notion until this phase. [GAP] on the Notion workspace and page targets.
 
 ### Phase 4: Discord HITL channel (💡 planned)

@@ -7,7 +7,7 @@ Tag legend: [HU] human-owned (provided or confirmed by the operator), [AI] autho
 ## Purpose
 
 - [HU] This repo is the Mission Control substrate: the portfolio registry (registry/), the agent overlays (agents/), the scheduler config (schedule/scheduler.yaml), and the inter-agent queues (queues/).
-- [HU] It is the operator's cockpit for a portfolio of zero-to-one AI bets, run by a 9-agent crew on OpenClaw (agents/_master_brief.md).
+- [HU] It is the operator's cockpit for a portfolio of zero-to-one AI bets, run by a 9-agent crew (agents/_master_brief.md). The crew runs on OpenClaw: operator-stated, see Stack. The master brief does not name the runtime.
 - [HU] This repo is canonical for portfolio-level state. Individual project repos remain canonical for their own state via their ProjectOS files (agents/_master_brief.md).
 - [HU] North star: $5,000 MRR from an AI-powered product by end of 2026. Operator: Snow. Timezone: America/Toronto (agents/_master_brief.md).
 
@@ -22,7 +22,7 @@ Tag legend: [HU] human-owned (provided or confirmed by the operator), [AI] autho
 - [AI] Registry files are canonical for portfolio state. Both are schema-plus-example files today, not yet populated: slot state in registry/portfolio.yaml, all-projects history in registry/projects.yaml (registry/portfolio.yaml, registry/projects.yaml).
 - [AI] Overlays are canonical for agent behavior. Each agent's role, trigger, inputs, outputs, decision rights, handoff target, and HITL points live in agents/<shape>/OVERLAY.md (agents/sphere/OVERLAY.md and the eight siblings).
 - [AI] agents/_master_brief.md is the shared context prepended to every agent's system prompt (agents/_master_brief.md).
-- [AI] agents/<shape>/IDENTITY.md files are skeletons: name and role are filled, every other value is [GAP] pending an operator review session (agents/sphere/IDENTITY.md and the eight siblings).
+- [AI] agents/<shape>/IDENTITY.md files are skeletons: name, role, and signature line are filled, every other value is [GAP] pending an operator review session (agents/sphere/IDENTITY.md and the eight siblings).
 - [AI] Queues are append-only logs. queues/decisions.jsonl and queues/handoffs.jsonl are truly empty today; their line schemas are documented in queues/README.md because comments are not valid JSONL (queues/README.md).
 - [AI] schedule/scheduler.yaml defines the cron triggers Sphere reads on startup. Every trigger ships with enabled: false (schedule/scheduler.yaml).
 - [AI] reports/torus/, reports/mobius/, and reports/parabola/ hold worker report output. They are empty except for .gitkeep files (reports/).
