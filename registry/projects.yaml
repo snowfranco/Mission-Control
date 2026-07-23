@@ -1,0 +1,23 @@
+# Not yet populated. Phase 1 of ROADMAP.md populates this from source repos.
+# Broader scope than portfolio.yaml: every project ever started, including
+# parked and killed. Torus sweeps this for revive candidates. Möbius uses it
+# for portfolio archaeology.
+
+version: 1
+last_updated: 2026-07-23
+
+projects: []
+
+# --- EXAMPLE ROW (not real state) ---
+# projects:
+#   - slug: <project-slug>
+#     name: <project name>
+#     aliases: [<short>, <repo path>]
+#     status: active | parked | killed | shipped
+#     kind: commercial_bet | personal | infra | writing
+#     repo: <local path or gh url>
+#     one_line: <what it is>
+#     started: YYYY-MM-DD
+#     killed: YYYY-MM-DD             # only if status: killed
+#     kill_reason: <one line>         # only if status: killed
+#     keywords: [<for Torus matching>]

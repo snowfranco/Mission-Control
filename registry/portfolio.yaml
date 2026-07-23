@@ -1,0 +1,36 @@
+# Not yet populated. Phase 1 of ROADMAP.md populates this from source repos.
+# Schema follows. Example row at the bottom, marked as example.
+
+version: 1
+last_updated: 2026-07-23
+operator: snow
+north_star:
+  target_mrr_usd: 5000
+  deadline: 2026-12-31
+  current_mrr_usd: 0
+wip_cap: 5
+commercial_slots_cap: 3
+
+slots: []
+
+# --- EXAMPLE ROW (not real state) ---
+# slots:
+#   - slot: 1
+#     name: <bet name>
+#     aliases: [<short>, <repo path>]
+#     kind: commercial_bet          # commercial_bet | personal | infra
+#     status: building              # validating | shaping | building | auditing | shipping | live | parked | killed
+#     repo: <local path or gh url>
+#     notion_page: <url>
+#     one_line: <what it is, for whom, why they pay>
+#     commercial_line: <how it makes money, or null for non-commercial>
+#     mrr_current_usd: 0
+#     mrr_target_usd: 2000          # this slot's share of the $5K
+#     started: 2026-07-15
+#     last_activity: 2026-07-23     # Möbius updates
+#     next_gate: <e.g. "Klein audit before v0.1 ship">
+#     kill_conditions:              # from Prism memo
+#       - <condition 1>
+#       - <condition 2>
+#     keywords: [<for Torus matching>]
+#     build_lane: claude_code       # claude_code | helix | split
