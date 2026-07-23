@@ -1,0 +1,5 @@
+# mission-control
+
+Mission Control is the operator's cockpit for a portfolio of zero-to-one AI bets, run by a 9-agent crew on OpenClaw. This repo is the canonical home for portfolio-level state: the project registry (`registry/`), the per-agent behavior overlays (`agents/`), the scheduler configuration (`schedule/`), and the append-only inter-agent queues (`queues/`). It contains no runtime code yet: it is markdown, YAML, and JSONL that the agents read and write as their shared source of truth.
+
+It fits into the operator's stack as the portfolio layer above the individual project repos. Each project repo remains canonical for its own state via its ProjectOS files (PROJECT_OS.md, ROADMAP.md, DECISIONS.md, PARKING_LOT.md, AGENTS.md); this repo owns everything cross-project: which bets fill the 5 WIP slots, which agents run on what schedule, and which decisions are pending the operator's go/no-go. Notion mirrors portfolio state for cross-machine visibility (written by Möbius in a later phase), and Telegram is the human-in-the-loop channel today. Everything here is measured against one north star: $5,000 MRR from an AI-powered product by end of 2026.
