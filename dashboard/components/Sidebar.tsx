@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { AGENTS, type AgentSlug } from "@/lib/agents";
+import type { AgentSlug } from "@/lib/agents";
+import { AgentShape } from "@/components/shapes";
 
 type NavItem = {
   href: string;
@@ -18,8 +19,7 @@ type NavItem = {
  * Möbius's ledger, the office houses everyone (Sphere anchors it), and
  * the Frameshift feed is Cardioid's stage.
  *
- * Glyphs are hue dots until the shape components land; the shapes
- * replace them in the same positions.
+ * The glyphs are the agents' shapes at sm size: the shape is the byline.
  */
 const NAV: NavItem[] = [
   { href: "/", label: "Decisions", agent: "sphere" },
@@ -54,14 +54,7 @@ export function Sidebar() {
                   : "text-muted-foreground hover:bg-accent/60 hover:text-foreground",
               )}
             >
-              <span
-                aria-hidden
-                className={cn(
-                  "inline-block size-2 rounded-full",
-                  !active && "opacity-50",
-                )}
-                style={{ backgroundColor: AGENTS[item.agent].cssVar }}
-              />
+              <AgentShape agent={item.agent} size="sm" muted={!active} />
               {item.label}
             </Link>
           );
