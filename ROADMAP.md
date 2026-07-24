@@ -29,7 +29,8 @@ Tag legend: [HU] human-owned, [AI] authored by the assistant from the repo, [INF
 - [HU] Walk the operator's existing project repos and derive real portfolio state into registry/portfolio.yaml and registry/projects.yaml, replacing the example rows.
 - [HU] This happens in a follow-on session, not the scaffold session (registry/portfolio.yaml header comment). [AI] Satisfied: that follow-on session ran 2026-07-24 on branch phase-1-registry-populate.
 - [AI] 2026-07-24: the six operator-listed repos were walked (Preflight, Watchtower, workoutapp, Sienna, Gabay, TheFrameshift). projects.yaml carries six derived rows; portfolio.yaml carries four proposed slot candidates as a leading comment block with slots left empty (registry/projects.yaml, registry/portfolio.yaml, reports/mobius/phase-1-registry-review.md).
-- [AI] Remaining to close the phase: the operator confirms the slot ordering and moves confirmed rows into slots:, fills mrr_target_usd and notion_page, resolves the [GAP] clusters, and decides what Watchtower is (its GitHub repo is empty) (reports/mobius/phase-1-registry-review.md).
+- [AI] 2026-07-24 update: Watchtower's contents were pushed to GitHub after the walk found it empty; its row was re-derived the same day and it joins the slot proposal as a conditional candidate (registry/projects.yaml, registry/portfolio.yaml).
+- [AI] Remaining to close the phase: the operator confirms the slot ordering and moves confirmed rows into slots:, fills mrr_target_usd and notion_page, and resolves the [GAP] clusters (reports/mobius/phase-1-registry-review.md).
 - [AI] Unlocks: Torus sweeps keyed off registry/projects.yaml, Möbius reports keyed off registry/portfolio.yaml, and honest WIP slot math (agents/torus/OVERLAY.md, agents/mobius/OVERLAY.md).
 
 ### Phase 2: Dashboard UI on localhost (💡 planned)

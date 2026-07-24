@@ -6,6 +6,11 @@ Tag legend: [HU] human-owned, [AI] authored by the assistant, [INFERRED] assista
 
 ## Decisions Log (newest first)
 
+### [2026-07-24] [AI] Watchtower is registered as infra, not personal
+Context: Watchtower was empty at the Phase 1 walk; the operator pushed its contents to GitHub later the same day and the row was re-derived from a fresh clone. The repo-only reading is personal: a single-user utility with no commercial layer in v1 by design. But it is tooling that feeds the operator's Claude stack: its PROJECT_OS.md frames it as the source layer for Claude Code Routines, and mission-control's own overlays name Watchtower as the HITL approval surface (agents/helix/OVERLAY.md, agents/sphere/OVERLAY.md). The repo itself names no other operator project.
+Decision: kind: infra with an [INFERRED] tag, the personal reading recorded in the row comment, and a conditional rank-5 slot proposal.
+Consequence: Watchtower does not touch the commercial cap. If the operator prefers personal, only the label changes; no slot math moves. Superseded if the operator rules otherwise.
+
 ### [2026-07-24] [AI] Sienna is registered as infra, not writing
 Context: The Phase 1 kind taxonomy fits Sienna two ways: it is a content pipeline (the "writing" definition) and it is tooling other projects depend on (the "infra" definition). The operator's Phase 1 instructions state Sienna is infra and a dependency of the Cardioid agent, and nothing in the Sienna repo contradicts that.
 Decision: kind: infra in both registry files, with the alternative reading noted in the row comment. Sienna is proposed for a slot only conditionally.

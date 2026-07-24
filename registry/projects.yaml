@@ -32,23 +32,27 @@ projects:
     keywords: [security audit, typescript, next.js, supabase, cli, claude agent sdk, stripe, vibe-coded apps, non-technical founders, production readiness]
 
   # --- watchtower ------------------------------------------------------
-  # [AI] The GitHub repo cloned successfully but is EMPTY: zero commits, no
-  # files. Nothing is derivable from source, so the row is [GAP] except the
-  # remote URL. Row kept because every repo on the operator's list gets one.
-  # [INFERRED] Likely infra: mission-control's own overlays reference
-  # Watchtower as the HITL approval surface (agents/helix/OVERLAY.md,
-  # agents/sphere/OVERLAY.md), but that is not evidence from this repo.
-  # A local ~/Projects/watchtower directory exists and was not walked.
+  # [AI] Row re-derived 2026-07-24: the initial Phase 1 walk found this repo
+  # EMPTY (zero commits); the operator pushed its contents to GitHub later
+  # the same day (18 commits, full ProjectOS set). Extraction adversarially
+  # verified against a fresh clone.
+  # kind: [INFERRED] the repo-only reading is personal (single-user, no
+  # commercial layer in v1 by design), but it is tooling that feeds the
+  # operator's Claude stack: PROJECT_OS.md frames it as the source layer for
+  # Claude Code Routines, and mission-control's own overlays name Watchtower
+  # as the HITL approval surface (agents/helix/OVERLAY.md,
+  # agents/sphere/OVERLAY.md). Non-commercial either way
+  # (DECISIONS.md, 2026-07-24).
   - slug: watchtower
-    name: "[GAP]"
+    name: Watchtower                   # [HU] PROJECT_OS.md title
     aliases: [Watchtower, watchtower]
-    status: "[GAP]"
-    kind: "[GAP]"
-    repo: https://github.com/snowfranco/Watchtower  # [AI] clone URL; repo has no commits
+    status: active                     # [AI] ROADMAP.md board: B2v (real-provider validation) is the single next phase
+    kind: infra                        # [INFERRED] see row comment; personal is the alternative reading
+    repo: https://github.com/snowfranco/Watchtower  # [AI] git remote get-url origin
     repo_local: "[GAP]"                # [INFERRED] possibly ~/Projects/watchtower (directory name match only, not walked)
-    one_line: "[GAP]"
-    started: "[GAP]"                   # empty repo, no commits
-    keywords: []                       # [GAP] empty repo, nothing to derive
+    one_line: "Watchtower is a self-hosted, single-user event hub that lets Claude react to the world instead of only answering when asked."  # [HU] PROJECT_OS.md purpose, first sentence
+    started: "2026-07-18T20:36:43-04:00"  # [AI] first commit
+    keywords: [mcp server, typescript, sqlite, telegram, webhooks, rss, event hub, claude code routines, email ingest, sms]
 
   # --- workoutapp ------------------------------------------------------
   # [AI] ProjectOS set present (PROJECT_OS.md, ROADMAP.md, PARKING_LOT.md,

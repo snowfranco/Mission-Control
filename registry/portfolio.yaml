@@ -37,12 +37,17 @@
 #    Rationale: operator note says Sienna is infra, a Cardioid dependency,
 #    not a slot on its own. Include only if the operator wants infra
 #    tracked in a slot.
-# 5. (no candidate)
-#    No personal projects are active among the walked repos. theframeshift
-#    is live, and live projects do not occupy slots.
+# 5. watchtower (infra, shipping), CONDITIONAL
+#    Rationale: non-commercial event hub at its real-provider validation
+#    gate (B2v). Added 2026-07-24 after the operator pushed the repo's
+#    contents to GitHub (it was empty at the initial walk). Same question
+#    as sienna: include only if the operator wants tooling tracked in
+#    slots. theframeshift stays out: live projects do not occupy slots.
 #
 # Commercial cap check: the 3 commercial candidates exactly fill the
 # 3-slot commercial cap. Nothing is displaced.
+# WIP cap check: five candidates for five slots, two of them conditional
+# (sienna, watchtower). Confirming all five fills the WIP cap exactly.
 #
 # --- PROPOSED ROWS (move confirmed entries into slots: below) ---------
 # slots:
@@ -125,6 +130,26 @@
 #     kill_conditions: "[GAP]"         # none defined in the repo
 #     keywords: [aeo, newsletter, content-pipeline, substack, linkedin, nextjs, typescript, sqlite, llm, drafting]
 #     build_lane: claude_code          # [INFERRED] default; no lane stated in repo docs
+#
+#   - slot: 5                          # CONDITIONAL: non-commercial tooling; include only if the operator wants it tracked in a slot
+#     slug: watchtower
+#     name: Watchtower                 # [HU] PROJECT_OS.md title
+#     aliases: [Watchtower, watchtower]
+#     kind: infra                      # [INFERRED] tooling for the operator's Claude stack; personal is the alternative reading (DECISIONS.md, 2026-07-24)
+#     status: shipping                 # [INFERRED] Builds 1 and 2 code-complete, 108 tests green, both adversarial audits shipped; remaining work is real-provider validation and Docker deploy
+#     repo: https://github.com/snowfranco/Watchtower
+#     repo_local: "[GAP]"              # [INFERRED] possibly ~/Projects/watchtower (name match only, not walked)
+#     notion_page: "[GAP]"             # [HU] operator fills
+#     one_line: "Watchtower is a self-hosted, single-user event hub that lets Claude react to the world instead of only answering when asked."
+#     commercial_line: null            # [AI] no commercial layer in v1 by design (PARKING_LOT.md billing deferral; PROJECT_OS.md no-billing constraint)
+#     mrr_current_usd: 0               # [AI] non-commercial
+#     mrr_target_usd: null             # [AI] non-commercial; no share of the $5K
+#     started: "2026-07-18T20:36:43-04:00"       # [AI] first commit
+#     last_activity: "2026-07-19T08:31:55-04:00" # [AI] last commit; Möbius updates
+#     next_gate: "B2v real-provider validation: wire real Postmark and Twilio accounts, send a real email and SMS end to end, and run docker compose on a Docker host, before Build 2 is declared shipped"
+#     kill_conditions: "[GAP]"         # none defined in the repo
+#     keywords: [mcp server, typescript, sqlite, telegram, webhooks, rss, event hub, claude code routines, email ingest, sms]
+#     build_lane: claude_code          # [INFERRED] default; house-workflow traces in the repo but no lane stated
 # ======================================================================
 
 version: 1
