@@ -1,6 +1,6 @@
 # ROADMAP: mission-control
 
-Last updated: 2026-07-23
+Last updated: 2026-07-24
 
 Tag legend: [HU] human-owned, [AI] authored by the assistant from the repo, [INFERRED] assistant default. Status vocabulary: ✅ shipped, 🔄 in progress, ⏳ next, 💡 planned, 🅿️ parked.
 
@@ -9,7 +9,7 @@ Tag legend: [HU] human-owned, [AI] authored by the assistant from the repo, [INF
 | Phase | What | Status | Shipped |
 |-------|------|--------|---------|
 | 0 | Repo scaffold: OS files, overlays, registry schemas, scheduler, queues | ✅ shipped | 2026-07-23 |
-| 1 | Registry population from source repos | ⏳ next | - |
+| 1 | Registry population from source repos | 🔄 in progress | - |
 | 2 | Dashboard UI on localhost | 💡 planned | - |
 | 3 | Notion mirror by Möbius | 💡 planned | - |
 | 4 | Discord HITL channel | 💡 planned | - |
@@ -24,10 +24,12 @@ Tag legend: [HU] human-owned, [AI] authored by the assistant from the repo, [INF
 - [AI] Open items: IDENTITY.md values are [GAP] for the operator; the OpenClaw embedder item is parked (PARKING_LOT.md).
 - [AI] What it unlocks: Phase 1 has a schema to populate and agents have overlays to run against.
 
-### Phase 1: Registry population from source repos (⏳ next)
+### Phase 1: Registry population from source repos (🔄 in progress)
 
 - [HU] Walk the operator's existing project repos and derive real portfolio state into registry/portfolio.yaml and registry/projects.yaml, replacing the example rows.
-- [HU] This happens in a follow-on session, not the scaffold session (registry/portfolio.yaml header comment).
+- [HU] This happens in a follow-on session, not the scaffold session (registry/portfolio.yaml header comment). [AI] Satisfied: that follow-on session ran 2026-07-24 on branch phase-1-registry-populate.
+- [AI] 2026-07-24: the six operator-listed repos were walked (Preflight, Watchtower, workoutapp, Sienna, Gabay, TheFrameshift). projects.yaml carries six derived rows; portfolio.yaml carries four proposed slot candidates as a leading comment block with slots left empty (registry/projects.yaml, registry/portfolio.yaml, reports/mobius/phase-1-registry-review.md).
+- [AI] Remaining to close the phase: the operator confirms the slot ordering and moves confirmed rows into slots:, fills mrr_target_usd and notion_page, resolves the [GAP] clusters, and decides what Watchtower is (its GitHub repo is empty) (reports/mobius/phase-1-registry-review.md).
 - [AI] Unlocks: Torus sweeps keyed off registry/projects.yaml, Möbius reports keyed off registry/portfolio.yaml, and honest WIP slot math (agents/torus/OVERLAY.md, agents/mobius/OVERLAY.md).
 
 ### Phase 2: Dashboard UI on localhost (💡 planned)

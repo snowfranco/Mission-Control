@@ -1,12 +1,122 @@
-# Not yet populated. Phase 1 of ROADMAP.md populates this from source repos.
+# Populated by Phase 1 of ROADMAP.md from source repos on 2026-07-24.
 # Broader scope than portfolio.yaml: every project ever started, including
 # parked and killed. Torus sweeps this for revive candidates. Möbius uses it
 # for portfolio archaeology.
+#
+# Phase 1 scope: the six GitHub repos on the operator's list, cloned read-only
+# and derived from their ProjectOS files and git state. Extraction was
+# adversarially verified. Full review: reports/mobius/phase-1-registry-review.md.
+# Tags: [HU] operator-authored content found in the source repo or an operator
+# instruction, [AI] synthesized from repo evidence, [INFERRED] a guess with
+# reasoning in a sibling comment, [GAP] nothing findable.
+# Conventions (DECISIONS.md, 2026-07-24): repo holds the git remote URL;
+# repo_local is an extension field for the operator's local checkout path;
+# started stores the full ISO first-commit timestamp from git (%cI).
 
 version: 1
-last_updated: 2026-07-23
+last_updated: 2026-07-24
 
-projects: []
+projects:
+  # --- preflight -------------------------------------------------------
+  # [AI] Full ProjectOS set present (PROJECT_OS.md, ROADMAP.md, PARKING_LOT.md,
+  # AGENTS.md with CLAUDE.md symlink). Seven commits, one per build phase.
+  - slug: preflight
+    name: Preflight                    # [HU] PROJECT_OS.md title
+    aliases: [Preflight, preflight, preflight-monorepo, "@preflight/core", "@preflight/cli", "@preflight/web"]  # [AI] package.json workspace names, plus "@preflight/cli" which appears only in a stale PROJECT_OS.md Stack line (kept for matching)
+    status: active                     # [AI] ROADMAP.md board: Phase 7 Hardening is the next phase
+    kind: commercial_bet               # [HU] revenue path: paywalled reports, $99 single audit, $249 bundle (ROADMAP.md Phase 6; PROJECT_OS.md free-tier decision)
+    repo: https://github.com/snowfranco/Preflight   # [AI] git remote get-url origin
+    repo_local: "[GAP]"                # [INFERRED] possibly ~/Projects/pre-flight (directory name match only, not walked)
+    one_line: 'Production-readiness auditor for AI-generated ("vibe-coded") apps: given a repo, it produces a scored audit report of security and reliability findings tied to file-level evidence, and can generate fix PRs.'  # [HU] PROJECT_OS.md purpose, first sentence
+    started: "2026-07-19T12:37:56Z"    # [AI] first commit
+    keywords: [security audit, typescript, next.js, supabase, cli, claude agent sdk, stripe, vibe-coded apps, non-technical founders, production readiness]
+
+  # --- watchtower ------------------------------------------------------
+  # [AI] The GitHub repo cloned successfully but is EMPTY: zero commits, no
+  # files. Nothing is derivable from source, so the row is [GAP] except the
+  # remote URL. Row kept because every repo on the operator's list gets one.
+  # [INFERRED] Likely infra: mission-control's own overlays reference
+  # Watchtower as the HITL approval surface (agents/helix/OVERLAY.md,
+  # agents/sphere/OVERLAY.md), but that is not evidence from this repo.
+  # A local ~/Projects/watchtower directory exists and was not walked.
+  - slug: watchtower
+    name: "[GAP]"
+    aliases: [Watchtower, watchtower]
+    status: "[GAP]"
+    kind: "[GAP]"
+    repo: https://github.com/snowfranco/Watchtower  # [AI] clone URL; repo has no commits
+    repo_local: "[GAP]"                # [INFERRED] possibly ~/Projects/watchtower (directory name match only, not walked)
+    one_line: "[GAP]"
+    started: "[GAP]"                   # empty repo, no commits
+    keywords: []                       # [GAP] empty repo, nothing to derive
+
+  # --- workoutapp ------------------------------------------------------
+  # [AI] ProjectOS set present (PROJECT_OS.md, ROADMAP.md, PARKING_LOT.md,
+  # CLAUDE.md). Docs were re-standardized to reality on 2026-07-15.
+  - slug: workoutapp
+    name: workoutapp                   # [GAP] app name undecided (PARKING_LOT.md Q1); folder name used. FitPulse is only an index.html placeholder.
+    aliases: [workoutapp, FitPulse, workout-timer]
+    status: active                     # [AI] ROADMAP.md: Phase 3 in progress
+    kind: commercial_bet               # [HU] white-label B2B SaaS model documented in PROJECT_OS.md
+    repo: https://github.com/snowfranco/workoutapp  # [AI] git remote get-url origin
+    repo_local: "[GAP]"                # no matching directory name in ~/Projects
+    one_line: "A premium, gender-neutral wellness workout timer app with a B2B white-label endgame."  # [HU] PROJECT_OS.md purpose, first sentence
+    started: "2026-06-10T22:20:20Z"    # [AI] first commit
+    keywords: [fitness, workout timer, white-label, b2b saas, wellness, react, typescript, coaches, localstorage, vite]
+
+  # --- sienna ----------------------------------------------------------
+  # [AI] ProjectOS set present (PROJECT_OS.md, ROADMAP.md, PARKING_LOT.md,
+  # CLAUDE.md). Two commits; v1 shipped, quality fine-tuning is next.
+  # kind: the repo reads as a content pipeline (the "writing" definition),
+  # but the operator's Phase 1 note states Sienna is infra, a dependency of
+  # the Cardioid agent, and the repo does not contradict that
+  # (DECISIONS.md, 2026-07-24).
+  - slug: sienna
+    name: Sienna                       # [HU] PROJECT_OS.md title
+    aliases: [Sienna, sienna, "AEO Newsletter Writing Partner"]
+    status: active                     # [AI] ROADMAP.md: in-progress and next items present
+    kind: infra                        # [HU] operator Phase 1 note; see row comment and DECISIONS.md, 2026-07-24
+    repo: https://github.com/snowfranco/Sienna      # [AI] git remote get-url origin
+    repo_local: "/Users/snow/Projects/sienna"       # [INFERRED] directory name match in ~/Projects, not walked
+    one_line: "Turn Snow's real build and work notes into published Substack and LinkedIn content with minimal friction."  # [HU] PROJECT_OS.md purpose, first sentence
+    started: "2026-07-14T21:49:28-04:00"  # [AI] first commit
+    keywords: [aeo, newsletter, content-pipeline, substack, linkedin, nextjs, typescript, sqlite, llm, drafting]
+
+  # --- gabay -----------------------------------------------------------
+  # [AI] ProjectOS set present (PROJECT_OS.md, ROADMAP.md, PARKING_LOT.md,
+  # CLAUDE.md). Repo docs also call the repo "pinai" (README quickstart,
+  # CLAUDE.md); GitHub name is Gabay. Naming drift noted in the review report.
+  - slug: gabay
+    name: Gabay Legal para sa OFW      # [HU] repo docs title
+    aliases: [Gabay, gabay, pinai, ofw, "OFW Legal AI"]
+    status: active                     # [AI] ROADMAP.md: populated in-progress section, last commit 2026-07-14
+    kind: commercial_bet               # [HU] revenue streams documented in ofw_legal_ai_foundational_docs.md
+    repo: https://github.com/snowfranco/Gabay       # [AI] git remote get-url origin
+    repo_local: "[GAP]"                # [INFERRED] possibly ~/Projects/pinai (repo docs call the repo pinai; name match only, not walked)
+    one_line: "Legal-information product for Overseas Filipino Workers: verify a recruitment agency's license, check an employment contract against the standard, and answer OFW labor and legal questions."  # [AI] PROJECT_OS.md one-line purpose, first sentence, tightly trimmed; that doc self-declares as backfilled from code, so not operator-authored
+    started: "2026-07-05T20:36:53-04:00"  # [AI] first commit
+    keywords: [legal-ai, ofw, philippines, rag, tagalog, fastapi, pgvector, safety-stack, freemium, consumer-legal]
+
+  # --- theframeshift ---------------------------------------------------
+  # [AI] Partial ProjectOS set: DECISIONS.md, ROADMAP.md, PARKING_LOT.md
+  # present; no PROJECT_OS.md, README.md, or AGENTS.md/CLAUDE.md, so one_line
+  # comes from ROADMAP.md instead of a purpose section.
+  # status: [INFERRED] the strict "shipped" rule (all phases done plus live
+  # deployment) has no clean match: all board rows are shipped except 2C
+  # (planned, deliberately held until real production failure modes are
+  # observed) and 2D (cancelled), and a live deployment exists: the
+  # com.frameshift.bot.plist LaunchAgent runs watcher/bot.py with RunAtLoad
+  # and KeepAlive (DECISIONS.md, 2026-07-24).
+  - slug: theframeshift
+    name: The Frameshift               # [AI] brand name across repo docs
+    aliases: [TheFrameshift, "Frameshift v2", frameshift_v2, "Frameshift bot", "@ai.xr.frameshift"]
+    status: shipped                    # [INFERRED] see row comment
+    kind: writing                      # [INFERRED] content automation for the Frameshift Instagram publication
+    repo: https://github.com/snowfranco/TheFrameshift  # [AI] git remote get-url origin
+    repo_local: "/Users/snow/Projects/frameshift_v2"   # [AI] com.frameshift.bot.plist runs watcher/bot.py from this path
+    one_line: "A lean, two-mode carousel generation system running on a MacBook: send a URL to Telegram and get a branded Instagram carousel back in under 10 minutes, or let it run on a schedule with human approval for 3 to 5 carousels daily."  # [AI] ROADMAP.md, no PROJECT_OS.md exists
+    started: "2026-07-06T10:05:37-04:00"  # [AI] first commit
+    keywords: [instagram carousels, telegram bot, python, pillow, groq, news ingestion, content automation, ai news, spatial computing, macos launchagent]
 
 # --- EXAMPLE ROW (not real state) ---
 # projects:

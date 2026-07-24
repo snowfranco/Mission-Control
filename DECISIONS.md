@@ -1,10 +1,30 @@
 # DECISIONS: mission-control
 
-Last updated: 2026-07-23
+Last updated: 2026-07-24
 
 Tag legend: [HU] human-owned, [AI] authored by the assistant, [INFERRED] assistant default. ADR format: Context (what forced the choice), Decision (what was chosen), Consequence (what we now live with). Newest first. Supersede, never delete.
 
 ## Decisions Log (newest first)
+
+### [2026-07-24] [AI] Sienna is registered as infra, not writing
+Context: The Phase 1 kind taxonomy fits Sienna two ways: it is a content pipeline (the "writing" definition) and it is tooling other projects depend on (the "infra" definition). The operator's Phase 1 instructions state Sienna is infra and a dependency of the Cardioid agent, and nothing in the Sienna repo contradicts that.
+Decision: kind: infra in both registry files, with the alternative reading noted in the row comment. Sienna is proposed for a slot only conditionally.
+Consequence: Sienna does not count toward the commercial cap, and Torus and Möbius treat it as tooling. If Sienna ever grows its own commercial line, the kind flips and this entry is superseded.
+
+### [2026-07-24] [AI] TheFrameshift is marked shipped (projects.yaml) and live (portfolio vocabulary)
+Context: The strict Phase 1 rule ("shipped" requires every phase done plus a live deployment reference) has no clean match: the board shows every phase shipped except 2C (planned, deliberately held until real production failure modes are observed) and 2D (cancelled), and a live deployment exists: the com.frameshift.bot.plist LaunchAgent runs watcher/bot.py with RunAtLoad and KeepAlive.
+Decision: status: shipped with an [INFERRED] tag; live in the portfolio vocabulary. It occupies no slot: live projects do not.
+Consequence: The registry reflects the system as deployed and running. If 2C work resumes, status flips to active and this entry is superseded.
+
+### [2026-07-24] [AI] Preflight ranked first in the slot proposal despite the ranking rule's bucket
+Context: The Phase 1 ranking rule puts commercial bets in "building or shaping" first. Preflight's derived status is shipping, which the rule does not address, yet it is the bet closest to revenue: pricing set, launch runbook prepared, most recent activity of all walked repos.
+Decision: Rank Preflight 1 with an [INFERRED] tag and the reasoning in portfolio.yaml's proposal block. Nothing is hard-assigned; the operator confirms or reorders.
+Consequence: The proposal reflects proximity to the $5K MRR goal rather than a literal bucket read. If the operator prefers strict rule order, workoutapp moves to rank 1.
+
+### [2026-07-24] [AI] Phase 1 registry conventions: repo_local extension field, full ISO dates, quoted [GAP] values
+Context: The Phase 1 spec asks for the local path AND the remote URL, but the schema has a single repo field; the walked clones were temporary, so local paths could only be name-matched against ~/Projects directory names. Git reports full ISO timestamps (%cI). A bare [GAP] in YAML would parse as a one-element list.
+Decision: repo holds the git remote URL; a repo_local extension field holds the operator's local checkout path, tagged [INFERRED] or [GAP]. started and last_activity store full ISO commit timestamps. Every [GAP] value is a quoted string. Proposed portfolio rows also carry a slug field matching projects.yaml so slot entries and project rows join cleanly.
+Consequence: The schema gains two fields (repo_local, slug) that consumers must tolerate. Timestamps are more precise than the schema examples show. Grepping for [GAP] and [INFERRED] still works.
 
 ### [2026-07-23] [AI] Queue files ship truly empty; line schemas live in queues/README.md
 Context: The queues need documented line formats, but comments are not valid JSONL, so a leading comment line would break every parser.
