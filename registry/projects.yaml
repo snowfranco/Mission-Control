@@ -125,17 +125,16 @@ projects:
   # --- mission-control -------------------------------------------------
   # [AI] Added 2026-07-24 at the operator's request ("this is the same work
   # we are doing now"). This IS the repo the registry lives in, so state was
-  # derived from the canonical local working tree, not a clone: the GitHub
-  # remote holds only the scaffold commit (d975ab7 on main) and the Phase 1
-  # work is unpushed by design. This repo is the cockpit that holds the
-  # portfolio, not a bet: it is tracked here but occupies no portfolio slot
-  # (DECISIONS.md, 2026-07-24; registry/portfolio.yaml).
+  # derived from the canonical local working tree, not a clone. Phase 1 is
+  # merged and pushed to the GitHub remote at HEAD 90f46dd. This repo is the
+  # cockpit that holds the portfolio, not a bet: it is tracked here but
+  # occupies no portfolio slot (DECISIONS.md, 2026-07-24; registry/portfolio.yaml).
   - slug: mission-control
     name: mission-control            # [HU] PROJECT_OS.md title
     aliases: [Mission Control, mission-control, missioncontrol, Mission-Control]  # [AI] docs title, folder name, GitHub repo name
-    status: active                   # [INFERRED] under active development (commits 2026-07-24, most recent of any tracked project); Phases 0-1 shipped, 2-4 planned; the board has no next marker yet
+    status: active                   # [INFERRED] under active development (commits 2026-07-24, most recent of any tracked project); Phases 0-1 shipped and pushed, 2-4 planned; the board has no next marker yet
     kind: infra                      # [AI] the portfolio operations substrate; supports every other project (PROJECT_OS.md purpose)
-    repo: https://github.com/snowfranco/Mission-Control  # [HU] operator-provided remote; holds only the scaffold commit today, Phase 1 work unpushed
+    repo: https://github.com/snowfranco/Mission-Control  # [HU] operator-provided remote; Phase 1 merged and pushed at HEAD 90f46dd
     repo_local: "/Users/snow/Projects/missioncontrol"    # [AI] this session's working directory (canonical for this project)
     one_line: "This repo is the Mission Control substrate: the portfolio registry (registry/), the agent overlays (agents/), the scheduler config (schedule/scheduler.yaml), and the inter-agent queues (queues/)."  # [HU] PROJECT_OS.md purpose, first sentence
     started: "2026-07-23T18:01:57-04:00"  # [AI] first commit

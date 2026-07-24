@@ -6,6 +6,11 @@ Tag legend: [HU] human-owned, [AI] authored by the assistant, [INFERRED] assista
 
 ## Decisions Log (newest first)
 
+### [2026-07-24] [AI] next_gate stays undated at registry time; Möbius reports "not dated" instead of inventing a countdown
+Context: Möbius's overlay reports "days to next gate," but milestone text without a date can't be counted down. Adding a target date field would force the operator to guess dates for bets Prism hasn't validated.
+Decision: Keep next_gate as free-form milestone text. Update Möbius's overlay to report "gate: <milestone text>, target date: <ISO date if set, else 'not dated'>". No target date is invented at registry time; dates come from Prism memos when a bet is validated, or from the operator explicitly.
+Consequence: Möbius weekly sentinel shows undated gates as "not dated" rather than a fake countdown. Torus and Sphere status queries tolerate undated gates without erroring.
+
 ### [2026-07-24] [AI] mission-control is tracked in projects.yaml but occupies no portfolio slot
 Context: The operator added mission-control (this repo) as a project after confirming all five portfolio slots (see the Slot assignments ADR at the foot of this file, which states the WIP cap is exactly filled and any new entry must displace one of the five). mission-control is infra: it is the cockpit that holds the portfolio and performs the WIP-cap accounting itself. State was derived from the canonical local working tree, not a clone, because the GitHub remote holds only the scaffold commit (d975ab7) and the Phase 1 work is unpushed.
 Decision: Add mission-control to registry/projects.yaml as kind: infra, status: active, and deliberately give it no portfolio slot. A portfolio does not occupy one of its own slots; a sixth slot would breach the WIP cap of 5 with nothing displaced.
