@@ -10,7 +10,7 @@
 
 import path from "node:path";
 import { promises as fs } from "node:fs";
-import yaml from "js-yaml";
+import { JSON_SCHEMA, load } from "js-yaml";
 import { AGENT_SLUGS, isAgentSlug, type AgentSlug } from "./agents";
 import type {
   AgentStatus,
@@ -46,7 +46,7 @@ async function readTextOrNull(relPath: string): Promise<string | null> {
  * what the types expect and what the UI formats.
  */
 function parseYaml<T>(raw: string): T {
-  return yaml.load(raw, { schema: yaml.JSON_SCHEMA }) as T;
+  return load(raw, { schema: JSON_SCHEMA }) as T;
 }
 
 export async function readPortfolio(): Promise<Portfolio | null> {

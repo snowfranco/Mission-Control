@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { Header } from "@/components/Header";
+import { Header, HeaderError } from "@/components/Header";
 import { Sidebar } from "@/components/Sidebar";
+import { readPortfolio } from "@/lib/fs";
+import type { SlotContribution } from "@/components/MRRTicker";
 import "./globals.css";
 
 const space = Space_Grotesk({
@@ -20,20 +22,24 @@ export const metadata: Metadata = {
   description: "Operator cockpit for the Mission Control portfolio.",
 };
 
-export default function RootLayout({
+// The repo files are the database; every render reads them fresh.
+export const dynamic = "force-dynamic";
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Ribbon values are wired to registry/portfolio.yaml in the data-layer
-  // step; until then the shell renders the zero state, which is also the
-  // true state.
-  const ribbon = {
-    currentUsd: 0,
-    targetUsd: 5000,
-    deadline: null,
-    slots: [],
-  };
+  const portfolio = await readPortfolio();
+
+  const slots: SlotContribution[] =
+    portfolio?.slots?.map((s) => ({
+      slot: s.slot,
+      name: s.name,
+      mrrCurrentUsd: s.mrr_current_usd ?? 0,
+      mrrTargetUsd:
+        typeof s.mrr_target_usd === "number" ? s.mrr_target_usd : null,
+    })) ?? [];
 
   return (
     <html
@@ -42,7 +48,16 @@ export default function RootLayout({
     >
       <body className="min-h-full">
         <TooltipProvider delayDuration={150}>
-          <Header {...ribbon} />
+          {portfolio ? (
+            <Header
+              currentUsd={portfolio.north_star.current_mrr_usd}
+              targetUsd={portfolio.north_star.target_mrr_usd}
+              deadline={portfolio.north_star.deadline}
+              slots={slots}
+            />
+          ) : (
+            <HeaderError error="Cannot read registry/portfolio.yaml: file not found" />
+          )}
           <div className="flex min-h-[calc(100vh-53px)]">
             <Sidebar />
             <main className="min-w-0 flex-1">
