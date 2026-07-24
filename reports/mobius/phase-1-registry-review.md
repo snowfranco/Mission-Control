@@ -5,14 +5,15 @@ Date: 2026-07-24. Branch: phase-1-registry-populate, pending operator review. Au
 ## Answer first
 
 - [AI] Six repos on the operator's list, six cloned, six walked. Watchtower was empty (zero commits) at the initial walk; the operator pushed its contents later the same day and its row is now fully derived (registry/projects.yaml). No clone failures.
-- [AI] projects.yaml has six populated rows. portfolio.yaml carries five proposed slot candidates in a leading comment block, two conditional (sienna, watchtower); slots: is empty until the operator confirms (registry/portfolio.yaml).
+- [AI] 2026-07-24 addition: mission-control (this repo) was added at the operator's request, derived from the canonical local working tree, not a clone. projects.yaml now has seven rows. mission-control is infra and occupies no slot (it is the cockpit, not a bet); see the not-slotted note in portfolio.yaml and DECISIONS.md 2026-07-24.
+- [AI] portfolio.yaml carries five proposed slot candidates in a leading comment block, two conditional (sienna, watchtower); slots: is empty until the operator confirms (registry/portfolio.yaml).
 - [AI] The three commercial candidates (preflight, workoutapp, gabay) exactly fill the 3-slot commercial cap; confirming all five candidates fills the WIP cap exactly. Every walked repo is pre-revenue, so current_mrr_usd stays 0.
 - [AI] Operator actions: confirm slot ordering, fill mrr_target_usd and notion_page, knock out the [GAP] clusters below, and confirm watchtower's kind (infra vs personal; non-commercial either way).
 
 ## Counts
 
-- [AI] Walked: 6 of 6 (Watchtower initially empty, re-walked after the operator pushed its contents). By kind: commercial_bet 3 (preflight, workoutapp, gabay), infra 2 (sienna, watchtower [INFERRED]), writing 1 (theframeshift).
-- [AI] By status: active 5 (preflight, watchtower, workoutapp, sienna, gabay), shipped 1 (theframeshift).
+- [AI] Rows in projects.yaml: 7. The 6 walked repos plus mission-control (this repo, derived in place). By kind: commercial_bet 3 (preflight, workoutapp, gabay), infra 3 (sienna, watchtower [INFERRED], mission-control), writing 1 (theframeshift).
+- [AI] By status: active 6 (preflight, watchtower, workoutapp, sienna, gabay, mission-control), shipped 1 (theframeshift).
 
 ## Proposed slot ordering (operator to confirm)
 
@@ -46,8 +47,9 @@ Date: 2026-07-24. Branch: phase-1-registry-populate, pending operator review. Au
 ## Found on disk, not on the candidate list (names only, NOT walked)
 
 - [AI] From a name-only listing of ~/Projects: Snowskin, eggcrm, "frameshift intelligence", gateway, manananggame, novacrm, "novacrm 2", pmaws, sunny, zen. These may be new or unregistered projects; none were read, per guardrails.
-- [AI] Apparent local checkouts of walked repos, also not walked: frameshift_v2, pinai, pre-flight, sienna, watchtower. missioncontrol is this repo.
-- [AI] Note: mission-control itself was not on the candidate list, so projects.yaml has no row for it. The operator may want one in a later run.
+- [AI] Apparent local checkouts of walked repos, also not walked: frameshift_v2, pinai, pre-flight, sienna, watchtower.
+- [AI] missioncontrol (this repo) now has a projects.yaml row, added 2026-07-24 and derived in place (see Answer first).
+- [AI] Heads-up on the operator's Slot-assignments ADR: it lists "pinai" among not-on-list directories excluded as non-active, but pinai is the local checkout of Gabay (Gabay's own docs call the repo pinai), which is an active commercial slot candidate. Worth confirming pinai is not being double-counted as a separate dead project.
 
 ## On the list, not found on disk
 

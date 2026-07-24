@@ -6,6 +6,11 @@ Tag legend: [HU] human-owned, [AI] authored by the assistant, [INFERRED] assista
 
 ## Decisions Log (newest first)
 
+### [2026-07-24] [AI] mission-control is tracked in projects.yaml but occupies no portfolio slot
+Context: The operator added mission-control (this repo) as a project after confirming all five portfolio slots (see the Slot assignments ADR at the foot of this file, which states the WIP cap is exactly filled and any new entry must displace one of the five). mission-control is infra: it is the cockpit that holds the portfolio and performs the WIP-cap accounting itself. State was derived from the canonical local working tree, not a clone, because the GitHub remote holds only the scaffold commit (d975ab7) and the Phase 1 work is unpushed.
+Decision: Add mission-control to registry/projects.yaml as kind: infra, status: active, and deliberately give it no portfolio slot. A portfolio does not occupy one of its own slots; a sixth slot would breach the WIP cap of 5 with nothing displaced.
+Consequence: projects.yaml carries seven rows; portfolio.yaml still tracks five slots. Möbius counts mission-control as active infra for archaeology, not against the five WIP slots. If the operator prefers it visible as a slot (by the "infra takes cognitive load" principle applied to slots 4-5), they must displace one of the five; flagged for review, not decided here.
+
 ### [2026-07-24] [AI] Watchtower is registered as infra, not personal
 Context: Watchtower was empty at the Phase 1 walk; the operator pushed its contents to GitHub later the same day and the row was re-derived from a fresh clone. The repo-only reading is personal: a single-user utility with no commercial layer in v1 by design. But it is tooling that feeds the operator's Claude stack: its PROJECT_OS.md frames it as the source layer for Claude Code Routines, and mission-control's own overlays name Watchtower as the HITL approval surface (agents/helix/OVERLAY.md, agents/sphere/OVERLAY.md). The repo itself names no other operator project.
 Decision: kind: infra with an [INFERRED] tag, the personal reading recorded in the row comment, and a conditional rank-5 slot proposal.
@@ -65,3 +70,24 @@ Consequence: Every behavior change leaves history and can be reviewed or rolled 
 Context: Portfolio state needs exactly one canonical home. Notion is convenient for cross-machine visibility but is not git-versioned, diffable, or agent-native.
 Decision: registry/portfolio.yaml and registry/projects.yaml in this repo are canonical for portfolio state. Notion is a mirror written by Möbius in Phase 3 (ROADMAP.md).
 Consequence: State changes are versioned and reviewable. The Notion mirror can lag or drift; flagging that drift is Möbius's job, not a canonicity question.
+
+## ADR: Slot assignments and MRR target split
+
+**Context.** Phase 1 populated the registry with 5 candidates from 6
+walked repos. Operator confirmed all 5 as slot occupants, including
+2 infra projects, on the principle that infra takes real cognitive
+load and should be visible against the WIP cap.
+
+**Decision.**
+- Slots 1-3: the three commercial bets, with mrr_target_usd split
+  2500/1500/1000 (weighted by conviction).
+- Slots 4-5: infra (Watchtower, Sienna), mrr_target null.
+- All notion_page fields marked [GAP], to be populated by Möbius in
+  Phase 3.
+- Not-on-list directories from ~/Projects (novacrm, eggcrm, pinai,
+  gateway, zen) are treated as non-active and excluded from
+  projects.yaml.
+
+**Consequence.** WIP cap is exactly filled. Any new bet must displace
+one of the five. Möbius weekly sentinel will run against the full
+five and produce the first real report.

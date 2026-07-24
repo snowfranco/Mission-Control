@@ -9,7 +9,7 @@ Tag legend: [HU] human-owned, [AI] authored by the assistant from the repo, [INF
 | Phase | What | Status | Shipped |
 |-------|------|--------|---------|
 | 0 | Repo scaffold: OS files, overlays, registry schemas, scheduler, queues | ✅ shipped | 2026-07-23 |
-| 1 | Registry population from source repos | 🔄 in progress | - |
+| 1 | Registry population from source repos | ✅ shipped | 2026-07-24 |
 | 2 | Dashboard UI on localhost | 💡 planned | - |
 | 3 | Notion mirror by Möbius | 💡 planned | - |
 | 4 | Discord HITL channel | 💡 planned | - |
@@ -30,6 +30,7 @@ Tag legend: [HU] human-owned, [AI] authored by the assistant from the repo, [INF
 - [HU] This happens in a follow-on session, not the scaffold session (registry/portfolio.yaml header comment). [AI] Satisfied: that follow-on session ran 2026-07-24 on branch phase-1-registry-populate.
 - [AI] 2026-07-24: the six operator-listed repos were walked (Preflight, Watchtower, workoutapp, Sienna, Gabay, TheFrameshift). projects.yaml carries six derived rows; portfolio.yaml carries four proposed slot candidates as a leading comment block with slots left empty (registry/projects.yaml, registry/portfolio.yaml, reports/mobius/phase-1-registry-review.md).
 - [AI] 2026-07-24 update: Watchtower's contents were pushed to GitHub after the walk found it empty; its row was re-derived the same day and it joins the slot proposal as a conditional candidate (registry/projects.yaml, registry/portfolio.yaml).
+- [AI] 2026-07-24 update: mission-control (this repo) added to projects.yaml at the operator's request. It is the cockpit, tracked as infra but occupying no portfolio slot; projects.yaml now carries seven rows (registry/projects.yaml, DECISIONS.md 2026-07-24).
 - [AI] Remaining to close the phase: the operator confirms the slot ordering and moves confirmed rows into slots:, fills mrr_target_usd and notion_page, and resolves the [GAP] clusters (reports/mobius/phase-1-registry-review.md).
 - [AI] Unlocks: Torus sweeps keyed off registry/projects.yaml, Möbius reports keyed off registry/portfolio.yaml, and honest WIP slot math (agents/torus/OVERLAY.md, agents/mobius/OVERLAY.md).
 
