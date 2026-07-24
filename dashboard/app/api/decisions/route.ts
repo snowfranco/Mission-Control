@@ -28,6 +28,12 @@ type CreateBody = {
   artifact?: string;
   options?: string[];
   note?: string;
+  /**
+   * When a panel action IS the operator's decision (radar route or
+   * dismiss, frameshift approve/revise/reject), the card is created
+   * already decided so the queue records the action without re-asking.
+   */
+  decision?: string;
 };
 
 /**
@@ -93,17 +99,19 @@ export async function POST(request: Request) {
         { status: 400 },
       );
     }
+    const now = torontoISO();
+    const decided = Boolean(body.decision);
     const card: DecisionCard = {
       id: await nextDecisionId(),
-      ts: torontoISO(),
+      ts: now,
       kind: body.kind,
       agent: body.agent,
       subject: body.subject,
       artifact: body.artifact ?? null,
       options: body.options ?? ["go", "no_go", "park", "revise"],
-      status: "pending",
-      decision: null,
-      decided_ts: null,
+      status: decided ? "decided" : "pending",
+      decision: decided ? (body.decision as string) : null,
+      decided_ts: decided ? now : null,
       note: body.note?.trim() ? body.note.trim() : null,
     };
     await appendDecision(card);
