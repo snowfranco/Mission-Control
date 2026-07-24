@@ -1,6 +1,6 @@
 # PROJECT_OS: mission-control
 
-Last updated: 2026-07-23
+Last updated: 2026-07-24
 
 Tag legend: [HU] human-owned (provided or confirmed by the operator), [AI] authored by the assistant from the repo, [INFERRED] a default the assistant chose rather than a deliberate operator decision. This file contains [INFERRED] entries in Stack; they are flagged inline. Unresolved items are tagged [GAP].
 
@@ -19,7 +19,7 @@ Tag legend: [HU] human-owned (provided or confirmed by the operator), [AI] autho
 
 ## Architecture as it actually is
 
-- [AI] Registry files are canonical for portfolio state. Both are schema-plus-example files today, not yet populated: slot state in registry/portfolio.yaml, all-projects history in registry/projects.yaml (registry/portfolio.yaml, registry/projects.yaml).
+- [AI] Registry files are canonical for portfolio state: slot state in registry/portfolio.yaml, all-projects history in registry/projects.yaml. As of Phase 1 (2026-07-24), projects.yaml carries six derived rows and portfolio.yaml carries proposed slot candidates in a leading comment block, with slots empty pending operator confirmation (registry/projects.yaml, registry/portfolio.yaml, reports/mobius/phase-1-registry-review.md).
 - [AI] Overlays are canonical for agent behavior. Each agent's role, trigger, inputs, outputs, decision rights, handoff target, and HITL points live in agents/<shape>/OVERLAY.md (agents/sphere/OVERLAY.md and the eight siblings).
 - [AI] agents/_master_brief.md is the shared context prepended to every agent's system prompt (agents/_master_brief.md).
 - [AI] agents/<shape>/IDENTITY.md files are skeletons: name, role, and signature line are filled, every other value is [GAP] pending an operator review session (agents/sphere/IDENTITY.md and the eight siblings).
@@ -42,7 +42,7 @@ Tag legend: [HU] human-owned (provided or confirmed by the operator), [AI] autho
 - [HU] WIP cap is 5 total slots, at most 3 active commercial bets. Overflow parks in the backlog, no exceptions (agents/_master_brief.md, AGENTS.md).
 - [HU] Telegram is the primary HITL channel today; Discord is Phase 4 (agents/_master_brief.md, ROADMAP.md).
 - [HU] No em dashes anywhere in any file. Use commas, colons, or parentheses (AGENTS.md).
-- [AI] The registry is not yet populated. Nothing that reads registry/portfolio.yaml or registry/projects.yaml can run meaningfully until Phase 1 completes (ROADMAP.md).
+- [AI] portfolio.yaml slots stay empty until the operator confirms the Phase 1 proposals, so slot-math consumers (Möbius WIP status, Sphere dispatch context) still cannot run meaningfully (registry/portfolio.yaml, ROADMAP.md).
 
 ## Decisions Log
 

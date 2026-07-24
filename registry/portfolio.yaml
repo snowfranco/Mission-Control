@@ -1,13 +1,173 @@
-# Not yet populated. Phase 1 of ROADMAP.md populates this from source repos.
+# Not yet populated with confirmed slots. Phase 1 of ROADMAP.md derived the
+# candidates below from source repos on 2026-07-24; slots: stays empty until
+# the operator moves confirmed entries out of the proposal block into slots:.
 # Schema follows. Example row at the bottom, marked as example.
+# Tags: [HU] operator-authored in the source repo or an operator instruction,
+# [AI] synthesized from repo evidence, [INFERRED] a guess with reasoning in a
+# sibling comment, [GAP] nothing findable.
+# Conventions (DECISIONS.md, 2026-07-24): repo holds the git remote URL,
+# repo_local the operator's local checkout path; dates are full ISO commit
+# timestamps from git. Full review: reports/mobius/phase-1-registry-review.md.
+#
+# ======================================================================
+# Proposed slot assignments (operator to confirm)
+# ======================================================================
+# Ranking rule applied: 1) commercial bets in building or shaping, most
+# recent activity first; 2) infra in building that unblocks other bets;
+# 3) personal projects in active.
+# [INFERRED] preflight is ranked 1 although its derived status (shipping)
+# sits past the rule's "building or shaping" bucket: a commercial bet at
+# the go-live gate outranks bets still building (DECISIONS.md, 2026-07-24).
+#
+# 1. preflight (commercial_bet, shipping)
+#    Rationale: closest bet to the first MRR dollar. Pricing set ($99
+#    single audit, $249 launch-gate bundle), launch runbook prepared,
+#    go-live pending Phase 7 hardening. Most recent activity of all
+#    walked repos (2026-07-20).
+# 2. workoutapp (commercial_bet, building)
+#    Rationale: only commercial bet literally in the rule's first bucket:
+#    Phase 3 in progress as of 2026-07-15 with a documented white-label
+#    B2B endgame. Caveats: production build broken (PARKING_LOT.md B4),
+#    app name undecided (Q1).
+# 3. gabay (commercial_bet, validating)
+#    Rationale: earliest-stage commercial bet. Revenue model documented,
+#    dual-track validation strategy in place, demand experiment not yet
+#    run and completion criteria unwritten.
+# 4. sienna (infra, building), CONDITIONAL
+#    Rationale: operator note says Sienna is infra, a Cardioid dependency,
+#    not a slot on its own. Include only if the operator wants infra
+#    tracked in a slot.
+# 5. watchtower (infra, shipping), CONDITIONAL
+#    Rationale: non-commercial event hub at its real-provider validation
+#    gate (B2v). Added 2026-07-24 after the operator pushed the repo's
+#    contents to GitHub (it was empty at the initial walk). Same question
+#    as sienna: include only if the operator wants tooling tracked in
+#    slots. theframeshift stays out: live projects do not occupy slots.
+#
+# Commercial cap check: the 3 commercial candidates exactly fill the
+# 3-slot commercial cap. Nothing is displaced.
+# WIP cap check: five candidates for five slots, two of them conditional
+# (sienna, watchtower). Confirming all five fills the WIP cap exactly.
+#
+# Not slotted: mission-control (this repo, infra, active). It is the
+# cockpit that holds the portfolio and does the WIP-cap accounting itself,
+# not a bet competing for a slot, so it is tracked in projects.yaml only
+# and occupies no slot. With the five slots confirmed full, adding it as a
+# sixth would breach the WIP cap of 5 with nothing displaced
+# (DECISIONS.md, 2026-07-24). Operator override: by the same "infra takes
+# cognitive load" principle used for slots 4-5, mission-control could take
+# a slot, but only by displacing one of the five.
+#
+# --- PROPOSED ROWS (move confirmed entries into slots: below) ---------
+# slots:
+#   - slot: 1
+#     slug: preflight
+#     name: Preflight                  # [HU] PROJECT_OS.md title
+#     aliases: [Preflight, preflight, preflight-monorepo]
+#     kind: commercial_bet             # [HU] revenue path in ROADMAP.md Phase 6 and PROJECT_OS.md free-tier decision
+#     status: shipping                 # [INFERRED] build phases 0-6 shipped, launch runbook prepared, go-live not executed
+#     repo: https://github.com/snowfranco/Preflight
+#     repo_local: "[GAP]"              # [INFERRED] possibly ~/Projects/pre-flight (name match only, not walked)
+#     notion_page: "[GAP]"             # [HU] operator fills
+#     one_line: 'Production-readiness auditor for AI-generated ("vibe-coded") apps: scored audit reports with file-level evidence and fix PRs, sold to non-technical founders.'
+#     commercial_line: "Paywalled audit reports: free teaser shows grade and severity counts, full report unlocks on payment. Single audit $99, launch-gate bundle $249, via Stripe (ROADMAP.md Phase 6; docs/launch-runbook.md)."
+#     mrr_current_usd: 0               # [AI] Stripe test mode only; go-live not executed (PARKING_LOT.md)
+#     mrr_target_usd: 2500         # [HU] operator carves up the $5K
+#     started: "2026-07-19T12:37:56Z"          # [AI] first commit
+#     last_activity: "2026-07-20T03:49:27Z"    # [AI] last commit; Möbius updates
+#     next_gate: "Phase 7 hardening, then operator-executed go-live per docs/launch-runbook.md (live Stripe keys, domain, OAuth verification, deploy) before the first paid audit"
+#     kill_conditions: "[GAP]"         # no Prism-style memo exists in the repo
+#     keywords: [security audit, typescript, next.js, supabase, cli, claude agent sdk, stripe, vibe-coded apps, non-technical founders, production readiness]
+#     build_lane: claude_code          # [INFERRED] default; no lane stated in repo docs
+#
+#   - slot: 2
+#     slug: workoutapp
+#     name: workoutapp                 # [GAP] app name undecided (PARKING_LOT.md Q1); folder name used
+#     aliases: [workoutapp, FitPulse, workout-timer]
+#     kind: commercial_bet             # [HU] white-label B2B SaaS model in PROJECT_OS.md
+#     status: building                 # [INFERRED] ROADMAP.md Phase 3 in progress
+#     repo: https://github.com/snowfranco/workoutapp
+#     repo_local: "[GAP]"              # no matching directory name in ~/Projects
+#     notion_page: "[GAP]"             # [HU] operator fills
+#     one_line: "A premium, gender-neutral wellness workout timer app with a B2B white-label endgame."
+#     commercial_line: "Coaches pay a monthly SaaS subscription to white-label the app for their roster; the free consumer tier is the acquisition funnel, premium unlocks a coach marketplace, and the shareable Flex Card is the viral loop. Pricing model undecided (PARKING_LOT.md Q7)."
+#     mrr_current_usd: 0               # [AI] pre-revenue: no backend, no deployment
+#     mrr_target_usd: 1000          # [HU] operator carves up the $5K
+#     started: "2026-06-10T22:20:20Z"            # [AI] first commit
+#     last_activity: "2026-07-15T00:09:25-04:00" # [AI] last commit; Möbius updates
+#     next_gate: "[GAP]"               # ROADMAP.md Next bucket deliberately blank pending operator pick
+#     kill_conditions: "[GAP]"         # none defined anywhere in the repo
+#     keywords: [fitness, workout timer, white-label, b2b saas, wellness, react, typescript, coaches, localstorage, vite]
+#     build_lane: claude_code          # [AI] PROJECT_OS.md: under active development in Claude Code; its Agent Roles table assigns Claude Code all code work
+#
+#   - slot: 3
+#     slug: gabay
+#     name: Gabay Legal para sa OFW    # [HU] repo docs title
+#     aliases: [Gabay, gabay, pinai, ofw, "OFW Legal AI"]
+#     kind: commercial_bet             # [HU] revenue streams in ofw_legal_ai_foundational_docs.md
+#     status: validating               # [INFERRED] dual-track validation strategy; demand experiment not yet run
+#     repo: https://github.com/snowfranco/Gabay
+#     repo_local: "[GAP]"              # [INFERRED] possibly ~/Projects/pinai (repo docs call the repo pinai; name match only, not walked)
+#     notion_page: "[GAP]"             # [HU] operator fills
+#     one_line: "Legal-information product for Overseas Filipino Workers: verify a recruitment agency's license, check an employment contract against the standard, and answer OFW labor and legal questions."
+#     commercial_line: "Freemium query model (free daily queries, paid packs for heavy users), document generation fees (demand letters, complaint affidavits, OWWA benefit claim forms), and referral fees from partner lawyers (ofw_legal_ai_foundational_docs.md)."
+#     mrr_current_usd: 0               # [AI] pre-launch, pre-validation, no pricing set
+#     mrr_target_usd: 1500          # [HU] operator carves up the $5K
+#     started: "2026-07-05T20:36:53-04:00"       # [AI] first commit
+#     last_activity: "2026-07-14T23:31:26-04:00" # [AI] last commit; Möbius updates
+#     next_gate: "[GAP]"               # ROADMAP.md Next section blank, marked for the operator; validation completion criteria unwritten (PARKING_LOT.md)
+#     kill_conditions: "[GAP]"         # none defined; PARKING_LOT.md flags the missing validation criteria
+#     keywords: [legal-ai, ofw, philippines, rag, tagalog, fastapi, pgvector, safety-stack, freemium, consumer-legal]
+#     build_lane: claude_code          # [INFERRED] default; repo hints at Claude Code builds but never states a lane
+#
+#   - slot: 4                          # CONDITIONAL: only if the operator wants infra tracked in a slot
+#     slug: sienna
+#     name: Sienna                     # [HU] PROJECT_OS.md title
+#     aliases: [Sienna, sienna, "AEO Newsletter Writing Partner"]
+#     kind: infra                      # [HU] operator Phase 1 note: infra, Cardioid dependency (DECISIONS.md, 2026-07-24)
+#     status: building                 # [INFERRED] active next phase (writing quality) on a shipped v1, no deployment
+#     repo: https://github.com/snowfranco/Sienna
+#     repo_local: "/Users/snow/Projects/sienna"  # [INFERRED] directory name match in ~/Projects, not walked
+#     notion_page: "[GAP]"             # [HU] operator fills
+#     one_line: "Turn Snow's real build and work notes into published Substack and LinkedIn content with minimal friction."
+#     commercial_line: null            # [AI] no business model note in the repo; supports the Frameshift flywheel
+#     mrr_current_usd: 0               # [AI] no revenue instrumentation
+#     mrr_target_usd: null             # [AI] non-commercial; no share of the $5K
+#     started: "2026-07-14T21:49:28-04:00"       # [AI] first commit
+#     last_activity: "2026-07-14T23:51:47-04:00" # [AI] last commit; Möbius updates
+#     next_gate: "Writing quality gate: fine-tune draft quality and voice until output needs minimal hand-editing before it ships to The Frameshift and LinkedIn"
+#     kill_conditions: "[GAP]"         # none defined in the repo
+#     keywords: [aeo, newsletter, content-pipeline, substack, linkedin, nextjs, typescript, sqlite, llm, drafting]
+#     build_lane: claude_code          # [INFERRED] default; no lane stated in repo docs
+#
+#   - slot: 5                          # CONDITIONAL: non-commercial tooling; include only if the operator wants it tracked in a slot
+#     slug: watchtower
+#     name: Watchtower                 # [HU] PROJECT_OS.md title
+#     aliases: [Watchtower, watchtower]
+#     kind: infra                      # [INFERRED] tooling for the operator's Claude stack; personal is the alternative reading (DECISIONS.md, 2026-07-24)
+#     status: shipping                 # [INFERRED] Builds 1 and 2 code-complete, 108 tests green, both adversarial audits shipped; remaining work is real-provider validation and Docker deploy
+#     repo: https://github.com/snowfranco/Watchtower
+#     repo_local: "[GAP]"              # [INFERRED] possibly ~/Projects/watchtower (name match only, not walked)
+#     notion_page: "[GAP]"             # [HU] operator fills
+#     one_line: "Watchtower is a self-hosted, single-user event hub that lets Claude react to the world instead of only answering when asked."
+#     commercial_line: null            # [AI] no commercial layer in v1 by design (PARKING_LOT.md billing deferral; PROJECT_OS.md no-billing constraint)
+#     mrr_current_usd: 0               # [AI] non-commercial
+#     mrr_target_usd: null             # [AI] non-commercial; no share of the $5K
+#     started: "2026-07-18T20:36:43-04:00"       # [AI] first commit
+#     last_activity: "2026-07-19T08:31:55-04:00" # [AI] last commit; Möbius updates
+#     next_gate: "B2v real-provider validation: wire real Postmark and Twilio accounts, send a real email and SMS end to end, and run docker compose on a Docker host, before Build 2 is declared shipped"
+#     kill_conditions: "[GAP]"         # none defined in the repo
+#     keywords: [mcp server, typescript, sqlite, telegram, webhooks, rss, event hub, claude code routines, email ingest, sms]
+#     build_lane: claude_code          # [INFERRED] default; house-workflow traces in the repo but no lane stated
+# ======================================================================
 
 version: 1
-last_updated: 2026-07-23
+last_updated: 2026-07-24
 operator: snow
 north_star:
   target_mrr_usd: 5000
   deadline: 2026-12-31
-  current_mrr_usd: 0
+  current_mrr_usd: 0    # [AI] every walked repo is pre-revenue (reports/mobius/phase-1-registry-review.md)
 wip_cap: 5
 commercial_slots_cap: 3
 
