@@ -30,3 +30,7 @@ venv/
 # Agent tooling (local state, not portfolio state)
 .claude/
 .openclaw/
+
+# Dashboard (Phase 2)
+dashboard/.next/
+dashboard/node_modules/
