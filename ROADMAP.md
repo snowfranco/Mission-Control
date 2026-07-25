@@ -14,6 +14,11 @@ Tag legend: [HU] human-owned, [AI] authored by the assistant from the repo, [INF
 | 3 | Notion mirror by Möbius | 💡 planned | - |
 | 4 | Discord HITL channel | 💡 planned | - |
 
+## Next session
+
+- [HU] Test Mission Control under OpenClaw on the second MacBook. Concretely: clone this repo there, point OpenClaw at the repo root, have Sphere read agents/_master_brief.md, agents/sphere/OVERLAY.md, and agents/sphere/IDENTITY.md, then confirm it can read registry/portfolio.yaml (five slots) and the empty queues/. Do NOT enable any scheduler trigger yet. The dashboard is optional there: cd dashboard, npm install, npm run dev.
+- [AI] Watch-out: registry repo_local values are absolute paths on this machine and will not resolve on the second MacBook (PARKING_LOT.md).
+
 ## Phase Detail
 
 ### Phase 0: Repo scaffold (✅ shipped 2026-07-23)
@@ -24,7 +29,7 @@ Tag legend: [HU] human-owned, [AI] authored by the assistant from the repo, [INF
 - [AI] Open items: IDENTITY.md values are [GAP] for the operator; the OpenClaw embedder item is parked (PARKING_LOT.md).
 - [AI] What it unlocks: Phase 1 has a schema to populate and agents have overlays to run against.
 
-### Phase 1: Registry population from source repos (🔄 in progress)
+### Phase 1: Registry population from source repos (✅ shipped 2026-07-24)
 
 - [HU] Walk the operator's existing project repos and derive real portfolio state into registry/portfolio.yaml and registry/projects.yaml, replacing the example rows.
 - [HU] This happens in a follow-on session, not the scaffold session (registry/portfolio.yaml header comment). [AI] Satisfied: that follow-on session ran 2026-07-24 on branch phase-1-registry-populate.
@@ -39,7 +44,7 @@ Tag legend: [HU] human-owned, [AI] authored by the assistant from the repo, [INF
 - [HU] A localhost dashboard over the registry, queues, and reports.
 - [AI] What was built: a Next.js App Router app in dashboard/ with six panels (Decisions Queue with approve/reject appending to queues/decisions.jsonl, Radar over reports/torus/, Pipeline kanban over portfolio slots, Portfolio Health over reports/mobius/, Agent Office with the nine shape glyphs as the interface signature, Frameshift Feed over reports/cardioid/), the MRR ribbon reading north_star across the top of every page, and live updates via chokidar plus Server-Sent Events (dashboard/README.md, dashboard/DESIGN_PLAN.md).
 - [AI] The dashboard is a file viewer plus one append-only write path, not an agent runtime (DECISIONS.md, 2026-07-24).
-- [AI] One acceptance check is blocked by registry state, not by the build: the pipeline board cannot show five slots while registry/portfolio.yaml has slots: []. Board rendering was verified against a fixture carrying the five confirmed candidates; the real board honestly reports the empty array (registry/portfolio.yaml proposal block).
+- [AI] 2026-07-24: the pipeline board and the Portfolio WIP table now render all five confirmed slots from registry/portfolio.yaml, verified live in the running dashboard. The earlier empty-array blocker cleared when the operator confirmed the slots that same day.
 - [AI] Unlocks: the operator's live cockpit. Notion mirror (Phase 3) and Discord HITL (Phase 4) remain unbuilt.
 
 ### Phase 3: Notion mirror by Möbius (💡 planned)
