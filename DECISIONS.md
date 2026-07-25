@@ -6,6 +6,11 @@ Tag legend: [HU] human-owned, [AI] authored by the assistant, [INFERRED] assista
 
 ## Decisions Log (newest first)
 
+### [2026-07-24] [AI] Dashboard as file viewer, not agent runtime
+Context: Phase 2 of ROADMAP.md. The dashboard could either execute agents directly or read their outputs from repo files. Direct execution would couple UI availability to agent execution and add runtime complexity (queues, workers, retry logic) that OpenClaw already provides.
+Decision: Dashboard is a read-only viewer over registry, queues, and reports, plus a small append-only write path for operator approvals in decisions.jsonl. Agents run in OpenClaw against the same files. Real-time updates come from SSE + chokidar file watching, not from agent-to-UI messaging.
+Consequence: Dashboard can be closed without stopping the crew. Multiple dashboard instances can run against the same repo (though the operator will only run one). If OpenClaw is offline, the dashboard still shows the last known state. Approval writes are observable to agents on their next wake.
+
 ### [2026-07-24] [AI] mission-control is tracked in projects.yaml but occupies no portfolio slot
 Context: The operator added mission-control (this repo) as a project after confirming all five portfolio slots (see the Slot assignments ADR at the foot of this file, which states the WIP cap is exactly filled and any new entry must displace one of the five). mission-control is infra: it is the cockpit that holds the portfolio and performs the WIP-cap accounting itself. State was derived from the canonical local working tree, not a clone, because the GitHub remote holds only the scaffold commit (d975ab7) and the Phase 1 work is unpushed.
 Decision: Add mission-control to registry/projects.yaml as kind: infra, status: active, and deliberately give it no portfolio slot. A portfolio does not occupy one of its own slots; a sixth slot would breach the WIP cap of 5 with nothing displaced.
