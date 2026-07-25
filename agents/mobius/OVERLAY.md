@@ -30,7 +30,7 @@ Three report types, written to `reports/mobius/`:
     # Möbius Weekly Sentinel
 
     ## WIP status
-    Slot 1 to 5, project name, status, days since last activity, next gate, days to next gate.
+    Slot 1 to 5, project name, status, days since last activity, gate: <milestone text>, target date: <ISO date if set, else "not dated"> (DECISIONS.md, 2026-07-24: no countdown is invented for undated gates).
 
     ## Stalled
     Projects with more than 14 days no activity. Each with: last activity, why stalled (from DECISIONS.md if written, otherwise "unknown, ask Sphere to ask operator"), kill/revive/wait recommendation.
