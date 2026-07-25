@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -160,6 +160,13 @@ export function DecisionsQueue({
   initial: DecisionCardType[];
 }) {
   const [lines, setLines] = useState(initial);
+
+  // A LiveRefresh-triggered server re-render passes fresh lines from
+  // disk; disk truth replaces the optimistic local state.
+  useEffect(() => {
+    setLines(initial);
+  }, [initial]);
+
   const { pending, recent } = splitQueue(reduceCards(lines));
 
   const onResolved = useCallback((resolved: DecisionCardType) => {

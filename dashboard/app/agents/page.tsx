@@ -1,4 +1,5 @@
 import { AgentRoom } from "@/components/AgentRoom";
+import { LiveRefresh } from "@/components/LiveRefresh";
 import { AGENT_SLUGS } from "@/lib/agents";
 import { readAllAgentStatuses } from "@/lib/fs";
 
@@ -14,6 +15,7 @@ export default async function AgentsPage() {
 
   return (
     <div>
+      <LiveRefresh watch={["agents/", "schedule/scheduler.yaml"]} />
       <h1 className="text-lg font-medium">Agents</h1>
       <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {AGENT_SLUGS.map((slug) => (

@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { marked } from "marked";
 import { AgentShape } from "@/components/shapes";
+import { LiveRefresh } from "@/components/LiveRefresh";
 import { Separator } from "@/components/ui/separator";
 import { AGENTS, isAgentSlug } from "@/lib/agents";
 import {
@@ -57,6 +58,14 @@ export default async function AgentDetailPage({
 
   return (
     <div className="space-y-8">
+      <LiveRefresh
+        watch={[
+          `agents/${slug}/`,
+          `reports/${slug}/`,
+          "queues/handoffs.jsonl",
+          "schedule/scheduler.yaml",
+        ]}
+      />
       <div className="flex items-center gap-5">
         <AgentShape agent={slug} size="lg" />
         <div>

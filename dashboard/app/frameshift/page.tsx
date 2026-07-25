@@ -1,3 +1,4 @@
+import { LiveRefresh } from "@/components/LiveRefresh";
 import {
   FrameshiftFeed,
   type ParsedDraft,
@@ -54,5 +55,10 @@ export default async function FrameshiftPage() {
     if (raw === null) continue;
     drafts.push(parseDraft(file.filename, file.mtime, raw));
   }
-  return <FrameshiftFeed drafts={drafts} />;
+  return (
+    <>
+      <LiveRefresh watch={["reports/cardioid/"]} />
+      <FrameshiftFeed drafts={drafts} />
+    </>
+  );
 }

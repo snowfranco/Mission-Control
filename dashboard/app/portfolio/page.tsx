@@ -1,3 +1,4 @@
+import { LiveRefresh } from "@/components/LiveRefresh";
 import {
   PortfolioHealth,
   type ReportView,
@@ -54,11 +55,14 @@ export default async function PortfolioPage() {
   }));
 
   return (
-    <PortfolioHealth
+    <>
+      <LiveRefresh watch={["registry/portfolio.yaml", "reports/mobius/"]} />
+      <PortfolioHealth
       portfolioReadable={portfolio !== null}
       slots={slots}
       sentinel={sentinel}
       drift={drift}
     />
+    </>
   );
 }

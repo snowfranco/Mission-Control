@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Header, HeaderError } from "@/components/Header";
+import { LiveRefresh } from "@/components/LiveRefresh";
 import { Sidebar } from "@/components/Sidebar";
 import { readPortfolio } from "@/lib/fs";
 import type { SlotContribution } from "@/components/MRRTicker";
@@ -48,6 +49,8 @@ export default async function RootLayout({
     >
       <body className="min-h-full">
         <TooltipProvider delayDuration={150}>
+          {/* The ribbon lives in the layout, so its refresh lives here too. */}
+          <LiveRefresh watch={["registry/portfolio.yaml"]} />
           {portfolio ? (
             <Header
               currentUsd={portfolio.north_star.current_mrr_usd}

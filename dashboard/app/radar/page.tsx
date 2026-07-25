@@ -1,3 +1,4 @@
+import { LiveRefresh } from "@/components/LiveRefresh";
 import {
   RadarPanel,
   type RadarEvidence,
@@ -155,5 +156,10 @@ export default async function RadarPage() {
       cards.push(...parseOpportunities(content, file.filename));
     }
   });
-  return <RadarPanel cards={cards} />;
+  return (
+    <>
+      <LiveRefresh watch={["reports/torus/"]} />
+      <RadarPanel cards={cards} />
+    </>
+  );
 }
