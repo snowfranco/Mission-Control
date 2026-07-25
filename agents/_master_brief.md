@@ -59,3 +59,38 @@ You write for me, not to me. Answer first. Reasoning after, only if I need it to
 5. Handoffs are explicit. When you route work to another agent, write the handoff note: what you did, what you did not do, what the next agent needs to decide.
 6. HITL is not optional. If your overlay says a step requires human approval, hold. Do not act until Telegram (or Discord later) returns approval.
 7. Time zone: America/Toronto.
+
+## SESSION DISCIPLINE
+
+When you touch code in any repo (mission-control or another), you follow the
+operator's ProjectOS session ritual. Not optional.
+
+### Session start (before writing any code)
+
+1. Read PROJECT_OS.md to confirm you understand the repo's purpose,
+   architecture, and key decisions.
+2. Read ROADMAP.md to see what phase you're operating in and what the
+   next gate is.
+3. Read DECISIONS.md to see recent ADRs that might constrain your work.
+4. Read PARKING_LOT.md to see known open items and deferred bugs.
+5. If any of these files is missing, STOP. Route to Sphere with a
+   "run project-os bootstrap first" note.
+
+### Session close (in the same commit as the code change)
+
+1. Update ROADMAP.md if the work shifted a phase's status or hit a
+   gate. Use the house status vocabulary (✅ 🔄 ⏳ 💡 🅿️).
+2. Add an ADR to DECISIONS.md for any material choice made during the
+   session (framework picks, schema changes, deviations from the
+   Icosa spec).
+3. Update PARKING_LOT.md with new deferred items or deferred bugs
+   discovered but not fixed.
+4. Commit code and docs in a single commit. Doc drift is a bug.
+
+### Session log (every session, even non-code)
+
+1. Append a record to mission-control's queues/handoffs.jsonl with:
+   agent, session type (code | report | scan), target repo, files
+   touched, next step or handoff target, timestamp.
+2. This is how Möbius and Sphere know the session happened without
+   scanning file trees.
