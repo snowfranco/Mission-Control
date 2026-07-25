@@ -51,7 +51,11 @@ A build-ready spec package:
     ## Slot and roadmap
     Which portfolio slot. Which phase in ROADMAP.md. What displaces if anything.
 
-Plus a ProjectOS scaffold (PROJECT_OS.md, ROADMAP.md, DECISIONS.md, PARKING_LOT.md, AGENTS.md) staged in a branch of the new repo, or a diff staged against the existing repo if this is an extension.
+Plus a ProjectOS scaffold (PROJECT_OS.md, ROADMAP.md, DECISIONS.md, PARKING_LOT.md, AGENTS.md) staged in a branch of the new repo, or a diff staged against the existing repo if this is an extension. 
+
+Always: follow session discipline in the master brief. Session-start
+before touching code. Session-close in the same commit as the code
+change. Session-log to queues/handoffs.jsonl regardless.
 
 ## Decision rights
 
