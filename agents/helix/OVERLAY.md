@@ -34,7 +34,9 @@ For build tasks: a branch, a diff, a PR-style summary, and a Watchtower approval
 
 For review tasks: a review report keyed by file and line with severity (block/warn/nit).
 
-Always: a docs delta. If code changed, ROADMAP.md and DECISIONS.md in the target repo update in the same commit. Doc drift is a bug.
+Always: follow session discipline in the master brief. Session-start
+before touching code. Session-close in the same commit as the code
+change. Session-log to queues/handoffs.jsonl regardless.
 
 ## Decision rights
 
