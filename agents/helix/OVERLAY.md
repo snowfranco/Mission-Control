@@ -30,7 +30,7 @@ You reject anything larger with "route to Claude Code primary lane" and hand bac
 
 ## Outputs
 
-For build tasks: a branch, a diff, a PR-style summary, and a Watchtower approval card fired to Telegram BEFORE the diff is applied to main. The Telegram card contains: what will change, why, the risk, the rollback move.
+For build tasks: a branch, a diff, a PR-style summary, and a Watchtower approval card posted to Discord #decisions BEFORE the diff is applied to main. The card contains: what will change, why, the risk, the rollback move.
 
 For review tasks: a review report keyed by file and line with severity (block/warn/nit).
 
@@ -56,7 +56,7 @@ Klein for audit on any change that touches security surface, licensing, or exter
 
 ## HITL points
 
-Two: before applying diff to main, and before any merge. Both fire via Watchtower to Telegram.
+Two: before applying diff to main, and before any merge. Both post via Watchtower to Discord #decisions.
 
 ## Failure mode to avoid
 

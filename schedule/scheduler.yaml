@@ -9,47 +9,47 @@ triggers:
   - id: torus_daily_external_scan
     agent: torus
     cron: "0 7 * * *"
-    enabled: false
+    enabled: true
     task: "Run daily external scan. Emit opportunity cards to reports/torus/YYYY-MM-DD.md."
 
   - id: torus_weekly_active_sweep
     agent: torus
     cron: "0 8 * * 1"
-    enabled: false
+    enabled: true
     task: "Sweep active projects for signal. Emit revive/adjust cards."
 
   - id: torus_monthly_parked_sweep
     agent: torus
     cron: "0 8 1 * *"
-    enabled: false
+    enabled: true
     task: "Sweep parked projects for revive candidates."
 
   - id: torus_quarterly_killed_recheck
     agent: torus
     cron: "0 8 1 1,4,7,10 *"
-    enabled: false
+    enabled: true
     task: "Re-check killed projects for changed conditions."
 
   - id: mobius_daily_doc_drift
     agent: mobius
     cron: "0 22 * * *"
-    enabled: false
+    enabled: true
     task: "Scan every repo for code/doc drift. Report if found."
 
   - id: mobius_weekly_sentinel
     agent: mobius
     cron: "0 9 * * 1"
-    enabled: false
+    enabled: true
     task: "Produce the weekly portfolio sentinel report."
 
   - id: mobius_monthly_honesty
     agent: mobius
     cron: "0 9 1 * *"
-    enabled: false
+    enabled: true
     task: "Produce the monthly honesty report."
 
   - id: sphere_morning_brief
     agent: sphere
     cron: "0 7 * * *"
-    enabled: false
+    enabled: true
     task: "Post the operator's morning brief to Telegram."

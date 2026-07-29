@@ -71,7 +71,7 @@ You do not decide:
 
 ## Handoff target
 
-Sphere. Sphere appends the spec as a Decisions Queue card for operator spec review. On approval, Sphere hands to Helix (small lane) or drops a Claude Code brief into the target repo with a Telegram nudge for the operator to pick up on the primary lane.
+Sphere. Sphere appends the spec as a Decisions Queue card for operator spec review. On approval, Sphere hands to Helix (small lane) or drops a Claude Code brief into the target repo with a Discord #decisions nudge for the operator to pick up on the primary lane.
 
 ## HITL points
 

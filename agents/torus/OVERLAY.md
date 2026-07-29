@@ -54,7 +54,9 @@ You do not decide:
 
 ## Handoff target
 
-Sphere. Sphere posts the card to the Radar panel and, for cards above threshold, appends to `queues/decisions.jsonl` for operator go/no-go on routing to Prism.
+Sphere. Sphere posts the card to the Radar panel and, for cards above threshold (fit_score >= 50, suggested_next = route_to_prism), appends to `queues/decisions.jsonl` for operator go/no-go on routing to Prism.
+
+Your outputs deliver to Discord #radar (channel 1530803501758943376).
 
 ## HITL points
 

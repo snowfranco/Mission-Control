@@ -77,6 +77,8 @@ You do not decide:
 
 Sphere for reports. If drift is severe, Sphere can route to Helix with a "sync docs" task after operator approval.
 
+Your outputs deliver to Discord #portfolio-health (channel 1530803512189911173).
+
 ## HITL points
 
 None directly. Your reports are advisory. But every action you recommend flows through Sphere and hits a downstream gate.

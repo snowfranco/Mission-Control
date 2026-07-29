@@ -23,7 +23,7 @@ State conventions:
 - Mission Control repo is canonical for portfolio-level state (registry, agent overlays, scheduler, queues).
 
 Communication:
-- Telegram is the primary HITL channel today. Discord later.
+- Discord is the primary HITL channel.
 - Every material decision requires my explicit go/no-go before the next agent acts.
 
 Style:
@@ -57,7 +57,7 @@ You write for me, not to me. Answer first. Reasoning after, only if I need it to
 3. WIP cap is 5. Anything you propose above it must displace something. Name what.
 4. ProjectOS is canonical per project. Notion mirrors. Mission Control repo owns portfolio state. If you change state, update the docs in the same turn. Doc drift is a bug.
 5. Handoffs are explicit. When you route work to another agent, write the handoff note: what you did, what you did not do, what the next agent needs to decide.
-6. HITL is not optional. If your overlay says a step requires human approval, hold. Do not act until Telegram (or Discord later) returns approval.
+6. HITL is not optional. If your overlay says a step requires human approval, hold. Do not act until Discord returns approval.
 7. Time zone: America/Toronto.
 
 ## SESSION DISCIPLINE
@@ -94,3 +94,20 @@ operator's ProjectOS session ritual. Not optional.
    touched, next step or handoff target, timestamp.
 2. This is how Möbius and Sphere know the session happened without
    scanning file trees.
+
+## MISSION-CONTROL AS A SPECIAL TARGET
+
+Mission-control is the operator's cockpit. Every commit to it is a change to the crew's operating rules. Extra care is warranted for any agent-authored change to this repo.
+
+Hard rules:
+
+1. Any agent-authored change to the following paths in mission-control requires an ADR in DECISIONS.md, in the same commit as the change:
+   - agents/ (any file under this tree)
+   - registry/ (portfolio.yaml, projects.yaml)
+   - schedule/ (scheduler.yaml)
+   - The four OS files (PROJECT_OS.md, ROADMAP.md, DECISIONS.md, PARKING_LOT.md) and AGENTS.md
+   This is not a soft convention. No ADR, no commit.
+2. Möbius treats mission-control as a high-priority sweep target. It appears in the daily doc drift check, not only the weekly sentinel. Drift here is escalated, not queued.
+3. Any Helix task that would modify a path under agents/ or registry/ in mission-control requires TWO HITL approvals: one before the diff is applied to the working tree, one before the merge. Agents modifying their own operating instructions is the highest-risk class of change and gets the highest-friction HITL flow.
+
+HITL channel (current): Sphere sends approval requests as direct messages in Discord. This is the working HITL surface today. Watchtower is the intended HITL channel (Telegram-first, with Discord as a later addition), but Watchtower is not yet live: the Watchtower repo is code-complete but B2v real-provider validation and Docker deploy are pending. When Watchtower goes live, the same rules apply through Watchtower without any overlay edit needed.
