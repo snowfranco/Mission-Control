@@ -1,10 +1,18 @@
 # DECISIONS: mission-control
 
-Last updated: 2026-07-24
+Last updated: 2026-07-31
 
 Tag legend: [HU] human-owned, [AI] authored by the assistant, [INFERRED] assistant default. ADR format: Context (what forced the choice), Decision (what was chosen), Consequence (what we now live with). Newest first. Supersede, never delete.
 
 ## Decisions Log (newest first)
+
+### [2026-07-31] [AI] Deck generation added as shared capability; pptx skill installed
+
+Context: Snow requested presentation generation for two distinct audiences: external/professional (investor, portfolio-facing) and internal (documentation, portfolio state summaries). The capability needed to be registered at the crew level rather than siloed into one agent, since both Cardioid and Möbius have standing access to the relevant content and the build paths differ by audience.
+
+Decision: Deck generation is a shared tool routed via Sphere, not per-agent logic. Cardioid handles external decks via Canva MCP (design polish, branded template). Möbius handles internal decks via the pptx skill in Claude Code (speed and clarity). The pptx skill was installed at workspace level from github.com/anthropics/skills (skills/pptx). Both capabilities are on-demand only, no scheduled cadence, and both output through existing HITL approval gates. Cardioid overlay, Möbius overlay, and _master_brief.md updated in the same change.
+
+Consequence: Any agent can request a deck via Sphere. If either use case later needs iteration cycles, multiple variants, or a dedicated review loop, it can graduate to its own agent slot without changes to the shared tool model.
 
 ### [2026-07-24] [AI] Dashboard as file viewer, not agent runtime
 Context: Phase 2 of ROADMAP.md. The dashboard could either execute agents directly or read their outputs from repo files. Direct execution would couple UI availability to agent execution and add runtime complexity (queues, workers, retry logic) that OpenClaw already provides.
