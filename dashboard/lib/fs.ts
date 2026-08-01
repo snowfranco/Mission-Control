@@ -11,6 +11,7 @@
 import path from "node:path";
 import { promises as fs } from "node:fs";
 import { JSON_SCHEMA, load } from "js-yaml";
+import { Cron } from "croner";
 import { AGENT_SLUGS, isAgentSlug, type AgentSlug } from "./agents";
 import type {
   AgentStatus,
@@ -195,7 +196,22 @@ export async function readAgentStatus(agent: AgentSlug): Promise<AgentStatus> {
   const triggers =
     scheduler?.triggers?.filter((t) => t.agent === agent && t.enabled) ?? [];
   if (triggers.length > 0) {
-    return { status: "scheduled", next_run_iso: null, derived: true };
+    const tz = scheduler?.timezone ?? "America/Toronto";
+    let nextRun: string | null = null;
+    for (const trigger of triggers) {
+      if (!trigger.cron) continue;
+      try {
+        const job = new Cron(trigger.cron, { timezone: tz });
+        const next = job.nextRun();
+        if (next) {
+          const iso = next.toISOString();
+          if (!nextRun || iso < nextRun) nextRun = iso;
+        }
+      } catch {
+        // Invalid cron expression; skip.
+      }
+    }
+    return { status: "scheduled", next_run_iso: nextRun, derived: true };
   }
   return { status: "idle", derived: true };
 }

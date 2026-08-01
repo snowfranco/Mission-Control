@@ -16,7 +16,17 @@ const STATUS_COLOR: Record<AgentStatus["status"], string> = {
 };
 
 function tsOrDash(iso: string | null | undefined): string {
-  return iso ?? "-";
+  if (!iso) return "-";
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return iso;
+  return d.toLocaleString("en-CA", {
+    timeZone: "America/Toronto",
+    month: "short",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  });
 }
 
 /**
